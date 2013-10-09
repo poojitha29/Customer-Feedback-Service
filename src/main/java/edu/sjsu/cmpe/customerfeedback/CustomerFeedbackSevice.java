@@ -40,7 +40,7 @@ public class CustomerFeedbackSevice extends Service<CustomerFeedbackServiceConfi
 	environment.addResource(new OwnerResource(ownerRepository));
 	/** Products APIs */
 	ProductRepositoryInterface productRepository = new ProductRepository(new ConcurrentHashMap<Integer, Product>());
-	environment.addResource(new ProductResource(productRepository));
+	environment.addResource(new ProductResource(productRepository));	
 	/** Add new resources here */
     }
 

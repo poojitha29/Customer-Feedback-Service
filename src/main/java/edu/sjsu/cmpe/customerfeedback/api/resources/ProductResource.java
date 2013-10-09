@@ -31,7 +31,7 @@ import edu.sjsu.cmpe.customerfeedback.repository.ProductRepositoryInterface;
  *
  */
 
-@Path("owners/{ownerId}/")
+@Path("owners/{ownerId}/products")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 
@@ -45,7 +45,6 @@ public class ProductResource {
 	}
 
 	@POST
-	@Path("products")
 	@Timed(name = "create-product")
 	public Response createProduct(@PathParam("ownerId") int ownerId,Product request){
 		Product savedProduct = productRepository.saveProduct(request);
@@ -57,7 +56,6 @@ public class ProductResource {
 	}
 	
 	@GET
-	@Path("products")
 	@Timed(name = "view-products-by-owner")
 	public Response viewProductsOfOwner(@PathParam("ownerId") int ownerId) {
 		List<Product> allProducts = productRepository.getallProducts();
@@ -68,7 +66,7 @@ public class ProductResource {
 	}
 	
 	@GET
-	@Path("products/{productId}")
+	@Path("/{productId}")
 	@Timed(name = "view-product-by-owner")
 	public Response viewProductByOwner(@PathParam("ownerId") int ownerId, @PathParam("productId") int productId) {
 		Product product = productRepository.getProductbyProductId(productId);
@@ -79,7 +77,7 @@ public class ProductResource {
 	}
 	
 	@PUT
-	@Path("products/{productId}")
+	@Path("/{productId}")
 	@Timed(name = "set-reviewable")
 	public Response setReviewable(@PathParam("productId") int productId, @PathParam("ownerId") int ownerId, @QueryParam("canReview") boolean value) {
 		Product product = productRepository.getProductbyProductId(productId);
