@@ -6,6 +6,7 @@ package edu.sjsu.cmpe.customerfeedback.api.resources;
 
 import java.util.List;
 
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -46,7 +47,7 @@ public class ProductResource {
 
 	@POST
 	@Timed(name = "create-product")
-	public Response createProduct(@PathParam("ownerId") int ownerId,Product request){
+	public Response createProduct(@PathParam("ownerId") int ownerId,@Valid Product request){
 		Product savedProduct = productRepository.saveProduct(request);
 		savedProduct.setOwnerId(ownerId);
 		int productId = savedProduct.getProductId();

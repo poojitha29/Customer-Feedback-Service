@@ -1,5 +1,7 @@
 package edu.sjsu.cmpe.customerfeedback.domain;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class Product {
 
 	public Product() {
@@ -7,6 +9,7 @@ public class Product {
 	}
 	private int productId;
 	private int ownerId;
+	@NotEmpty
 	private String productName;
 	private boolean canReview = false;
 	

@@ -1,5 +1,6 @@
 package edu.sjsu.cmpe.customerfeedback.api.resources;
 
+import javax.validation.Valid;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -31,7 +32,7 @@ public class OwnerResource {
 	
 	@POST
 	@Timed(name = "create-owner")
-	public Response createOwner(Owner request) {
+	public Response createOwner(@Valid Owner request) {
 		Owner savedOwner = ownerRepository.saveOwner(request);
 		int ownerId = savedOwner.getOwnerId();
 		LinksDto links = new LinksDto();

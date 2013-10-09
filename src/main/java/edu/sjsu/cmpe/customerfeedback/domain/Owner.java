@@ -1,8 +1,9 @@
 package edu.sjsu.cmpe.customerfeedback.domain;
-
+import org.hibernate.validator.constraints.NotEmpty;
 public class Owner {
 	
 	int ownerId;
+	@NotEmpty
 	String ownerName;
 
 	public Owner() {
