@@ -3,6 +3,8 @@
  */
 package edu.sjsu.cmpe.customerfeedback.repository;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 import edu.sjsu.cmpe.customerfeedback.domain.Product;
@@ -48,6 +50,15 @@ public class ProductRepository implements ProductRepositoryInterface {
 	public Product getProductbyProductId(int productId) {
 		checkArgument(productId>0, "productId was "+productId+", but expected a greater than zero value");
 		return productInMemoryMap.get(productId);
+	}
+	
+	public List<Product> getallProducts() {
+		List<Product> allProducts = new ArrayList<Product>();
+		for (int i = 1; i <= productInMemoryMap.size(); i++) {
+			allProducts.add(productInMemoryMap.get(i));
+		}
+		return allProducts;
+		
 	}
 
 }

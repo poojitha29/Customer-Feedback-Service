@@ -2,23 +2,22 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>SPAARK</groupId>
+  <groupId>edu.sjsu.cmpe</groupId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <url>http://maven.apache.org</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
 
   <dependencies>
   	<dependency>
   		<groupId>com.yammer.dropwizard</groupId>
   		<artifactId>dropwizard-core</artifactId>
-  		<version>0.6.2</version>
+  		<version>${dropwizard.version}</version>
   	</dependency>
   </dependencies>
   <artifactId>cust-feedback</artifactId>
-  <name>Customer Feedback</name>
+  <name>Customer Feedback Service</name>
+  <properties>
+  	<dropwizard.version>0.6.2</dropwizard.version>
+  </properties>
 </project>

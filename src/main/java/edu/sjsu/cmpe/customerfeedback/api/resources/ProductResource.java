@@ -3,6 +3,9 @@
  */
 package edu.sjsu.cmpe.customerfeedback.api.resources;
 
+
+import java.util.List;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -20,6 +23,7 @@ import edu.sjsu.cmpe.customerfeedback.domain.Product;
 import edu.sjsu.cmpe.customerfeedback.dto.LinkDto;
 import edu.sjsu.cmpe.customerfeedback.dto.LinksDto;
 import edu.sjsu.cmpe.customerfeedback.dto.ProductDto;
+import edu.sjsu.cmpe.customerfeedback.dto.ProductsDto;
 import edu.sjsu.cmpe.customerfeedback.repository.ProductRepositoryInterface;
 
 /**
@@ -56,7 +60,11 @@ public class ProductResource {
 	@Path("products")
 	@Timed(name = "view-products-by-owner")
 	public Response viewProductsOfOwner(@PathParam("ownerId") int ownerId) {
-		return Response.ok().build();
+		List<Product> allProducts = productRepository.getallProducts();
+		ProductsDto links = new ProductsDto(allProducts);
+		for (int i = 0; i< allProducts.size(); i++)
+		links.addLink(new LinkDto("view-product", "/owners/"+ownerId+"/products/"+allProducts.get(i).getProductId(), "GET"));
+		return Response.ok().entity(allProducts).build();
 	}
 	
 	@GET
