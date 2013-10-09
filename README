@@ -1,0 +1,14 @@
+Customer Feedback Service
+==========================
+
+Project Team: SPAARK
+
+Build a customer feedback service that can store and retrieve reviews of the product offered by multi-tenant businesses.
+
+
+How to run this project?
+	$ mvn clean package
+	$ java -jar target/library-0.0.1-SNAPSHOT.jar server config/dev_config.yml
+	
+
+Service End Point: http://localhost:8080/cust-feedback/
