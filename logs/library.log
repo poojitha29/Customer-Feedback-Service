@@ -1979,3 +1979,223 @@ INFO  [2013-10-09 21:16:08,524] com.yammer.dropwizard.config.Environment: tasks 
 
     POST    /tasks/gc (com.yammer.dropwizard.tasks.GarbageCollectionTask)
 
+WARN  [2013-10-09 22:52:53,659] com.yammer.dropwizard.config.ServerFactory: 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!    THIS SERVICE HAS NO HEALTHCHECKS. THIS MEANS YOU WILL NEVER KNOW IF IT    !
+!    DIES IN PRODUCTION, WHICH MEANS YOU WILL NEVER KNOW IF YOU'RE LETTING     !
+!     YOUR USERS DOWN. YOU SHOULD ADD A HEALTHCHECK FOR EACH DEPENDENCY OF     !
+!     YOUR SERVICE WHICH FULLY (BUT LIGHTLY) TESTS YOUR SERVICE'S ABILITY TO   !
+!      USE THAT SERVICE. THINK OF IT AS A CONTINUOUS INTEGRATION TEST.         !
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+INFO  [2013-10-09 22:52:53,824] com.yammer.dropwizard.cli.ServerCommand: Starting customerfeedback-service
+INFO  [2013-10-09 22:52:53,827] org.eclipse.jetty.server.Server: jetty-8.y.z-SNAPSHOT
+INFO  [2013-10-09 22:52:54,252] com.sun.jersey.server.impl.application.WebApplicationImpl: Initiating Jersey application, version 'Jersey: 1.17.1 02/28/2013 12:47 PM'
+INFO  [2013-10-09 22:52:54,465] com.yammer.dropwizard.config.Environment: The following paths were found for the configured resources:
+
+    GET     /cust-feedback/owners/{ownerId} (edu.sjsu.cmpe.customerfeedback.api.resources.OwnerResource)
+    POST    /cust-feedback/owners (edu.sjsu.cmpe.customerfeedback.api.resources.OwnerResource)
+    GET     /cust-feedback/owners/{ownerId}/products (edu.sjsu.cmpe.customerfeedback.api.resources.ProductResource)
+    GET     /cust-feedback/owners/{ownerId}/products/{productId} (edu.sjsu.cmpe.customerfeedback.api.resources.ProductResource)
+    POST    /cust-feedback/owners/{ownerId}/products (edu.sjsu.cmpe.customerfeedback.api.resources.ProductResource)
+    PUT     /cust-feedback/owners/{ownerId}/products/{productId} (edu.sjsu.cmpe.customerfeedback.api.resources.ProductResource)
+    GET     /cust-feedback/ (edu.sjsu.cmpe.customerfeedback.api.resources.RootResource)
+
+INFO  [2013-10-09 22:52:54,467] com.yammer.dropwizard.config.Environment: tasks = 
+
+    POST    /tasks/gc (com.yammer.dropwizard.tasks.GarbageCollectionTask)
+
+INFO  [2013-10-09 22:52:55,265] org.eclipse.jetty.server.AbstractConnector: Started InstrumentedBlockingChannelConnector@0.0.0.0:8080
+INFO  [2013-10-09 22:52:55,284] org.eclipse.jetty.server.AbstractConnector: Started SocketConnector@0.0.0.0:8081
+WARN  [2013-10-09 22:53:48,589] com.yammer.dropwizard.config.ServerFactory: 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!    THIS SERVICE HAS NO HEALTHCHECKS. THIS MEANS YOU WILL NEVER KNOW IF IT    !
+!    DIES IN PRODUCTION, WHICH MEANS YOU WILL NEVER KNOW IF YOU'RE LETTING     !
+!     YOUR USERS DOWN. YOU SHOULD ADD A HEALTHCHECK FOR EACH DEPENDENCY OF     !
+!     YOUR SERVICE WHICH FULLY (BUT LIGHTLY) TESTS YOUR SERVICE'S ABILITY TO   !
+!      USE THAT SERVICE. THINK OF IT AS A CONTINUOUS INTEGRATION TEST.         !
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+INFO  [2013-10-09 22:53:48,756] com.yammer.dropwizard.cli.ServerCommand: Starting customerfeedback-service
+INFO  [2013-10-09 22:53:48,759] org.eclipse.jetty.server.Server: jetty-8.y.z-SNAPSHOT
+INFO  [2013-10-09 22:53:49,161] com.sun.jersey.server.impl.application.WebApplicationImpl: Initiating Jersey application, version 'Jersey: 1.17.1 02/28/2013 12:47 PM'
+INFO  [2013-10-09 22:53:49,390] com.yammer.dropwizard.config.Environment: The following paths were found for the configured resources:
+
+    GET     /cust-feedback/owners/{ownerId} (edu.sjsu.cmpe.customerfeedback.api.resources.OwnerResource)
+    POST    /cust-feedback/owners (edu.sjsu.cmpe.customerfeedback.api.resources.OwnerResource)
+    GET     /cust-feedback/owners/{ownerId}/products (edu.sjsu.cmpe.customerfeedback.api.resources.ProductResource)
+    GET     /cust-feedback/owners/{ownerId}/products/{productId} (edu.sjsu.cmpe.customerfeedback.api.resources.ProductResource)
+    POST    /cust-feedback/owners/{ownerId}/products (edu.sjsu.cmpe.customerfeedback.api.resources.ProductResource)
+    PUT     /cust-feedback/owners/{ownerId}/products/{productId} (edu.sjsu.cmpe.customerfeedback.api.resources.ProductResource)
+    GET     /cust-feedback/ (edu.sjsu.cmpe.customerfeedback.api.resources.RootResource)
+
+INFO  [2013-10-09 22:53:49,392] com.yammer.dropwizard.config.Environment: tasks = 
+
+    POST    /tasks/gc (com.yammer.dropwizard.tasks.GarbageCollectionTask)
+
+WARN  [2013-10-09 22:53:50,207] org.eclipse.jetty.util.component.AbstractLifeCycle: FAILED InstrumentedBlockingChannelConnector@0.0.0.0:8080: java.net.BindException: Address already in use
+! java.net.BindException: Address already in use
+! at sun.nio.ch.Net.bind0(Native Method) ~[na:1.8.0-ea]
+! at sun.nio.ch.Net.bind(Net.java:414) ~[na:1.8.0-ea]
+! at sun.nio.ch.Net.bind(Net.java:406) ~[na:1.8.0-ea]
+! at sun.nio.ch.ServerSocketChannelImpl.bind(ServerSocketChannelImpl.java:214) ~[na:1.8.0-ea]
+! at sun.nio.ch.ServerSocketAdaptor.bind(ServerSocketAdaptor.java:74) ~[na:1.8.0-ea]
+! at org.eclipse.jetty.server.nio.BlockingChannelConnector.open(BlockingChannelConnector.java:127) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at org.eclipse.jetty.server.AbstractConnector.doStart(AbstractConnector.java:316) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at org.eclipse.jetty.server.nio.BlockingChannelConnector.doStart(BlockingChannelConnector.java:85) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at org.eclipse.jetty.server.Server.doStart(Server.java:291) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at com.yammer.dropwizard.cli.ServerCommand.run(ServerCommand.java:48) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at com.yammer.dropwizard.cli.EnvironmentCommand.run(EnvironmentCommand.java:39) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at com.yammer.dropwizard.cli.ConfiguredCommand.run(ConfiguredCommand.java:58) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at com.yammer.dropwizard.cli.Cli.run(Cli.java:53) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at com.yammer.dropwizard.Service.run(Service.java:61) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at edu.sjsu.cmpe.customerfeedback.CustomerFeedbackSevice.main(CustomerFeedbackSevice.java:25) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+WARN  [2013-10-09 22:53:50,212] org.eclipse.jetty.util.component.AbstractLifeCycle: FAILED SocketConnector@0.0.0.0:8081: java.net.BindException: Address already in use
+! java.net.BindException: Address already in use
+! at java.net.PlainSocketImpl.socketBind(Native Method) ~[na:1.8.0-ea]
+! at java.net.AbstractPlainSocketImpl.bind(AbstractPlainSocketImpl.java:382) ~[na:1.8.0-ea]
+! at java.net.ServerSocket.bind(ServerSocket.java:375) ~[na:1.8.0-ea]
+! at java.net.ServerSocket.<init>(ServerSocket.java:237) ~[na:1.8.0-ea]
+! at java.net.ServerSocket.<init>(ServerSocket.java:181) ~[na:1.8.0-ea]
+! at org.eclipse.jetty.server.bio.SocketConnector.newServerSocket(SocketConnector.java:96) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at org.eclipse.jetty.server.bio.SocketConnector.open(SocketConnector.java:85) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at org.eclipse.jetty.server.AbstractConnector.doStart(AbstractConnector.java:316) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at org.eclipse.jetty.server.bio.SocketConnector.doStart(SocketConnector.java:156) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at org.eclipse.jetty.server.Server.doStart(Server.java:291) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at com.yammer.dropwizard.cli.ServerCommand.run(ServerCommand.java:48) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at com.yammer.dropwizard.cli.EnvironmentCommand.run(EnvironmentCommand.java:39) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at com.yammer.dropwizard.cli.ConfiguredCommand.run(ConfiguredCommand.java:58) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at com.yammer.dropwizard.cli.Cli.run(Cli.java:53) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at com.yammer.dropwizard.Service.run(Service.java:61) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at edu.sjsu.cmpe.customerfeedback.CustomerFeedbackSevice.main(CustomerFeedbackSevice.java:25) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+WARN  [2013-10-09 22:53:50,213] org.eclipse.jetty.util.component.AbstractLifeCycle: FAILED org.eclipse.jetty.server.Server@698122b2: MultiException[java.net.BindException: Address already in use, java.net.BindException: Address already in use]
+! org.eclipse.jetty.util.MultiException: Multiple exceptions
+! at org.eclipse.jetty.server.Server.doStart(Server.java:273) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at com.yammer.dropwizard.cli.ServerCommand.run(ServerCommand.java:48) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at com.yammer.dropwizard.cli.EnvironmentCommand.run(EnvironmentCommand.java:39) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at com.yammer.dropwizard.cli.ConfiguredCommand.run(ConfiguredCommand.java:58) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at com.yammer.dropwizard.cli.Cli.run(Cli.java:53) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at com.yammer.dropwizard.Service.run(Service.java:61) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at edu.sjsu.cmpe.customerfeedback.CustomerFeedbackSevice.main(CustomerFeedbackSevice.java:25) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+ERROR [2013-10-09 22:53:50,219] com.yammer.dropwizard.cli.ServerCommand: Unable to start server, shutting down
+! org.eclipse.jetty.util.MultiException: Multiple exceptions
+! at org.eclipse.jetty.server.Server.doStart(Server.java:273) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at org.eclipse.jetty.util.component.AbstractLifeCycle.start(AbstractLifeCycle.java:64) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at com.yammer.dropwizard.cli.ServerCommand.run(ServerCommand.java:48) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at com.yammer.dropwizard.cli.EnvironmentCommand.run(EnvironmentCommand.java:39) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at com.yammer.dropwizard.cli.ConfiguredCommand.run(ConfiguredCommand.java:58) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at com.yammer.dropwizard.cli.Cli.run(Cli.java:53) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at com.yammer.dropwizard.Service.run(Service.java:61) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+! at edu.sjsu.cmpe.customerfeedback.CustomerFeedbackSevice.main(CustomerFeedbackSevice.java:25) ~[cmpe273-project-master-0.0.1-SNAPSHOT.jar:na]
+INFO  [2013-10-09 22:53:50,219] org.eclipse.jetty.server.Server: Graceful shutdown SocketConnector@0.0.0.0:8081
+INFO  [2013-10-09 22:53:50,220] org.eclipse.jetty.server.Server: Graceful shutdown InstrumentedBlockingChannelConnector@0.0.0.0:8080
+INFO  [2013-10-09 22:53:50,221] org.eclipse.jetty.server.Server: Graceful shutdown o.e.j.s.ServletContextHandler{/,null}
+INFO  [2013-10-09 22:53:50,226] org.eclipse.jetty.server.Server: Graceful shutdown o.e.j.s.ServletContextHandler{/,null}
+INFO  [2013-10-09 22:53:52,228] org.eclipse.jetty.server.handler.ContextHandler: stopped o.e.j.s.ServletContextHandler{/,null}
+INFO  [2013-10-09 22:53:52,229] org.eclipse.jetty.server.handler.ContextHandler: stopped o.e.j.s.ServletContextHandler{/,null}
+WARN  [2013-10-09 22:55:00,897] com.yammer.dropwizard.config.ServerFactory: 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!    THIS SERVICE HAS NO HEALTHCHECKS. THIS MEANS YOU WILL NEVER KNOW IF IT    !
+!    DIES IN PRODUCTION, WHICH MEANS YOU WILL NEVER KNOW IF YOU'RE LETTING     !
+!     YOUR USERS DOWN. YOU SHOULD ADD A HEALTHCHECK FOR EACH DEPENDENCY OF     !
+!     YOUR SERVICE WHICH FULLY (BUT LIGHTLY) TESTS YOUR SERVICE'S ABILITY TO   !
+!      USE THAT SERVICE. THINK OF IT AS A CONTINUOUS INTEGRATION TEST.         !
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+INFO  [2013-10-09 22:55:01,076] com.yammer.dropwizard.cli.ServerCommand: Starting customerfeedback-service
+INFO  [2013-10-09 22:55:01,079] org.eclipse.jetty.server.Server: jetty-8.y.z-SNAPSHOT
+INFO  [2013-10-09 22:55:01,479] com.sun.jersey.server.impl.application.WebApplicationImpl: Initiating Jersey application, version 'Jersey: 1.17.1 02/28/2013 12:47 PM'
+INFO  [2013-10-09 22:55:01,676] com.yammer.dropwizard.config.Environment: The following paths were found for the configured resources:
+
+    GET     /cust-feedback/owners/{ownerId} (edu.sjsu.cmpe.customerfeedback.api.resources.OwnerResource)
+    POST    /cust-feedback/owners (edu.sjsu.cmpe.customerfeedback.api.resources.OwnerResource)
+    GET     /cust-feedback/owners/{ownerId}/products (edu.sjsu.cmpe.customerfeedback.api.resources.ProductResource)
+    GET     /cust-feedback/owners/{ownerId}/products/{productId} (edu.sjsu.cmpe.customerfeedback.api.resources.ProductResource)
+    POST    /cust-feedback/owners/{ownerId}/products (edu.sjsu.cmpe.customerfeedback.api.resources.ProductResource)
+    PUT     /cust-feedback/owners/{ownerId}/products/{productId} (edu.sjsu.cmpe.customerfeedback.api.resources.ProductResource)
+    GET     /cust-feedback/ (edu.sjsu.cmpe.customerfeedback.api.resources.RootResource)
+
+INFO  [2013-10-09 22:55:01,678] com.yammer.dropwizard.config.Environment: tasks = 
+
+    POST    /tasks/gc (com.yammer.dropwizard.tasks.GarbageCollectionTask)
+
+INFO  [2013-10-09 22:55:02,415] org.eclipse.jetty.server.AbstractConnector: Started InstrumentedBlockingChannelConnector@0.0.0.0:8080
+INFO  [2013-10-09 22:55:02,434] org.eclipse.jetty.server.AbstractConnector: Started SocketConnector@0.0.0.0:8081
+INFO  [2013-10-09 23:09:22,889] org.eclipse.jetty.server.Server: Graceful shutdown SocketConnector@0.0.0.0:8081
+INFO  [2013-10-09 23:09:22,894] org.eclipse.jetty.server.Server: Graceful shutdown InstrumentedBlockingChannelConnector@0.0.0.0:8080
+INFO  [2013-10-09 23:09:22,908] org.eclipse.jetty.server.Server: Graceful shutdown o.e.j.s.ServletContextHandler{/,null}
+INFO  [2013-10-09 23:09:22,908] org.eclipse.jetty.server.Server: Graceful shutdown o.e.j.s.ServletContextHandler{/,null}
+INFO  [2013-10-09 23:09:24,963] org.eclipse.jetty.server.handler.ContextHandler: stopped o.e.j.s.ServletContextHandler{/,null}
+INFO  [2013-10-09 23:09:24,964] org.eclipse.jetty.server.handler.ContextHandler: stopped o.e.j.s.ServletContextHandler{/,null}
+WARN  [2013-10-09 23:11:22,628] com.yammer.dropwizard.config.ServerFactory: 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!    THIS SERVICE HAS NO HEALTHCHECKS. THIS MEANS YOU WILL NEVER KNOW IF IT    !
+!    DIES IN PRODUCTION, WHICH MEANS YOU WILL NEVER KNOW IF YOU'RE LETTING     !
+!     YOUR USERS DOWN. YOU SHOULD ADD A HEALTHCHECK FOR EACH DEPENDENCY OF     !
+!     YOUR SERVICE WHICH FULLY (BUT LIGHTLY) TESTS YOUR SERVICE'S ABILITY TO   !
+!      USE THAT SERVICE. THINK OF IT AS A CONTINUOUS INTEGRATION TEST.         !
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+INFO  [2013-10-09 23:11:22,798] com.yammer.dropwizard.cli.ServerCommand: Starting customerfeedback-service
+INFO  [2013-10-09 23:11:22,802] org.eclipse.jetty.server.Server: jetty-8.y.z-SNAPSHOT
+INFO  [2013-10-09 23:11:23,190] com.sun.jersey.server.impl.application.WebApplicationImpl: Initiating Jersey application, version 'Jersey: 1.17.1 02/28/2013 12:47 PM'
+INFO  [2013-10-09 23:11:23,393] com.yammer.dropwizard.config.Environment: The following paths were found for the configured resources:
+
+    GET     /cust-feedback/owners/{ownerId} (edu.sjsu.cmpe.customerfeedback.api.resources.OwnerResource)
+    POST    /cust-feedback/owners (edu.sjsu.cmpe.customerfeedback.api.resources.OwnerResource)
+    GET     /cust-feedback/owners/{ownerId}/products (edu.sjsu.cmpe.customerfeedback.api.resources.ProductResource)
+    GET     /cust-feedback/owners/{ownerId}/products/{productId} (edu.sjsu.cmpe.customerfeedback.api.resources.ProductResource)
+    POST    /cust-feedback/owners/{ownerId}/products (edu.sjsu.cmpe.customerfeedback.api.resources.ProductResource)
+    PUT     /cust-feedback/owners/{ownerId}/products/{productId} (edu.sjsu.cmpe.customerfeedback.api.resources.ProductResource)
+    GET     /cust-feedback/ (edu.sjsu.cmpe.customerfeedback.api.resources.RootResource)
+
+INFO  [2013-10-09 23:11:23,395] com.yammer.dropwizard.config.Environment: tasks = 
+
+    POST    /tasks/gc (com.yammer.dropwizard.tasks.GarbageCollectionTask)
+
+INFO  [2013-10-09 23:11:24,214] org.eclipse.jetty.server.AbstractConnector: Started InstrumentedBlockingChannelConnector@0.0.0.0:8080
+INFO  [2013-10-09 23:11:24,231] org.eclipse.jetty.server.AbstractConnector: Started SocketConnector@0.0.0.0:8081
+INFO  [2013-10-09 23:11:40,616] org.eclipse.jetty.server.Server: Graceful shutdown SocketConnector@0.0.0.0:8081
+INFO  [2013-10-09 23:11:40,625] org.eclipse.jetty.server.Server: Graceful shutdown InstrumentedBlockingChannelConnector@0.0.0.0:8080
+INFO  [2013-10-09 23:11:40,634] org.eclipse.jetty.server.Server: Graceful shutdown o.e.j.s.ServletContextHandler{/,null}
+INFO  [2013-10-09 23:11:40,635] org.eclipse.jetty.server.Server: Graceful shutdown o.e.j.s.ServletContextHandler{/,null}
+INFO  [2013-10-09 23:11:42,690] org.eclipse.jetty.server.handler.ContextHandler: stopped o.e.j.s.ServletContextHandler{/,null}
+INFO  [2013-10-09 23:11:42,691] org.eclipse.jetty.server.handler.ContextHandler: stopped o.e.j.s.ServletContextHandler{/,null}
+WARN  [2013-10-09 23:12:44,998] com.yammer.dropwizard.config.ServerFactory: 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!    THIS SERVICE HAS NO HEALTHCHECKS. THIS MEANS YOU WILL NEVER KNOW IF IT    !
+!    DIES IN PRODUCTION, WHICH MEANS YOU WILL NEVER KNOW IF YOU'RE LETTING     !
+!     YOUR USERS DOWN. YOU SHOULD ADD A HEALTHCHECK FOR EACH DEPENDENCY OF     !
+!     YOUR SERVICE WHICH FULLY (BUT LIGHTLY) TESTS YOUR SERVICE'S ABILITY TO   !
+!      USE THAT SERVICE. THINK OF IT AS A CONTINUOUS INTEGRATION TEST.         !
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+INFO  [2013-10-09 23:12:45,156] com.yammer.dropwizard.cli.ServerCommand: Starting customerfeedback-service
+INFO  [2013-10-09 23:12:45,160] org.eclipse.jetty.server.Server: jetty-8.y.z-SNAPSHOT
+INFO  [2013-10-09 23:12:45,565] com.sun.jersey.server.impl.application.WebApplicationImpl: Initiating Jersey application, version 'Jersey: 1.17.1 02/28/2013 12:47 PM'
+INFO  [2013-10-09 23:12:45,747] com.yammer.dropwizard.config.Environment: The following paths were found for the configured resources:
+
+    GET     /cust-feedback/owners/{ownerId} (edu.sjsu.cmpe.customerfeedback.api.resources.OwnerResource)
+    POST    /cust-feedback/owners (edu.sjsu.cmpe.customerfeedback.api.resources.OwnerResource)
+    GET     /cust-feedback/owners/{ownerId}/products (edu.sjsu.cmpe.customerfeedback.api.resources.ProductResource)
+    GET     /cust-feedback/owners/{ownerId}/products/{productId} (edu.sjsu.cmpe.customerfeedback.api.resources.ProductResource)
+    POST    /cust-feedback/owners/{ownerId}/products (edu.sjsu.cmpe.customerfeedback.api.resources.ProductResource)
+    PUT     /cust-feedback/owners/{ownerId}/products/{productId} (edu.sjsu.cmpe.customerfeedback.api.resources.ProductResource)
+    GET     /cust-feedback/ (edu.sjsu.cmpe.customerfeedback.api.resources.RootResource)
+
+INFO  [2013-10-09 23:12:45,750] com.yammer.dropwizard.config.Environment: tasks = 
+
+    POST    /tasks/gc (com.yammer.dropwizard.tasks.GarbageCollectionTask)
+
+INFO  [2013-10-09 23:12:46,513] org.eclipse.jetty.server.AbstractConnector: Started InstrumentedBlockingChannelConnector@0.0.0.0:8080
+INFO  [2013-10-09 23:12:46,535] org.eclipse.jetty.server.AbstractConnector: Started SocketConnector@0.0.0.0:8081

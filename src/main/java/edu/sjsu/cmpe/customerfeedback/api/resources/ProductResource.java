@@ -84,7 +84,7 @@ public class ProductResource {
 		Product product = productRepository.getProductbyProductId(productId);
 		product.setCanReview(value);
 		LinksDto links = new LinksDto();
-		links.addLink(new LinkDto("view-product-by-owner", "/owners/"+ownerId+"products"+productId , "GET"));
+		links.addLink(new LinkDto("view-product-by-owner", "/owners/"+ownerId+"/products/"+productId , "GET"));
 		return Response.ok().entity(links).build();
 	}
 	
