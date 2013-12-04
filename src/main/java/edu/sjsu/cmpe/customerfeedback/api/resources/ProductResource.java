@@ -48,8 +48,8 @@ public class ProductResource {
 	@POST
 	@Timed(name = "create-product")
 	public Response createProduct(@PathParam("ownerId") int ownerId,@Valid Product request){
+		request.setOwnerId(ownerId);
 		Product savedProduct = productRepository.saveProduct(request);
-		savedProduct.setOwnerId(ownerId);
 		int productId = savedProduct.getProductId();
 		LinksDto links = new LinksDto();
 		links.addLink(new LinkDto("view-product", "/owners/"+ownerId+"/products/"+productId, "GET"));
