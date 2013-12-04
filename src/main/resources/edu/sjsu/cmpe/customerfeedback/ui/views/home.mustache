@@ -1,0 +1,15 @@
+<html>
+    <body>
+        <!-- calls getBook().getTitle() -->
+        <h1>Welcome to the Customer Feedback Service!</h1>
+        <tr>
+        <td><button id="1" type="button" class="btn btn-primary">Products</button></td>
+        <td><button id="2" type="button" class="btn btn-primary">Owners Home</button></td>
+        </tr>
+        
+		<script type="text/javascript">
+        	document.getElementById("1").onclick = function () { alert('Products'); window.location = '/cust-feedback/products' };
+        	document.getElementById("2").onclick = function () { alert('Products by Owner'); window.location = '/cust-feedback/owners/1/products' };
+		</script>
+    </body>
+</html>

@@ -12,6 +12,8 @@ public class Product {
 	@NotEmpty
 	private String productName;
 	private boolean canReview = false;
+	private boolean whichTemplate;
+	
 	
 	public int getProductId() {
 		return productId;
@@ -37,6 +39,19 @@ public class Product {
 	public void setCanReview(boolean canReview) {
 		this.canReview = canReview;
 	}
+	/**
+	 * @return the whichTemplate
+	 */
+	public boolean isWhichTemplate() {
+		return whichTemplate;
+	}
+	/**
+	 * @param whichTemplate the whichTemplate to set
+	 */
+	public void setWhichTemplate(boolean whichTemplate) {
+		this.whichTemplate = whichTemplate;
+	}
+	
 	
 	
 

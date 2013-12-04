@@ -1,0 +1,27 @@
+<html>
+        <body>
+            <table border="1">
+            	<tr>
+            		<td>Owner Id</td>
+            		<td>Product Id</td>
+            		<td>Product Image</td>
+            		<td>Product Name</td>
+            		<td>Reviewable?</td>
+            		<td>Template</td>
+            		<td>Change Template</td>
+            	</tr>
+            {{#products}}
+                <tr>
+                	<td>{{ownerId}}</td>
+                	<td>{{productId}}</td>
+                    <td><img class="img-thumbnail" height="80" width="80" src="{{coverImage}}"></td>
+                    <td>{{productName}}</td>
+                    <td>{{#canReview}}Reviewable{{/canReview}}{{^canReview}}<button id="{{ownerId}}{{productId}}Review" type="button" class="btn btn-primary">Set Reviewable</button>{{/canReview}}</td>
+                    <td>{{#canReview}}{{^whichTemplate}}5-Star Rating{{/whichTemplate}}{{#whichTemplate}}Like/Unlike{{/whichTemplate}}{{/canReview}}</td>
+                    <td>{{#canReview}}<button id="{{ownerId}}{{productId}}Template" type="button" class="btn btn-primary">{{^whichTemplate}}Set Like/Unlike{{/whichTemplate}}{{#whichTemplate}}Set 5-Star Rating{{/whichTemplate}}{{/canReview}}</button></td>
+                    <td><input name="star1" type="radio" class="star"/> <input name="star1" type="radio" class="star"/> <input name="star1" type="radio" class="star"/> <input name="star1" type="radio" class="star"/> <input name="star1" type="radio" class="star"/></td>
+                </tr>
+            {{/products}}
+            </table>
+        </body>
+</html>

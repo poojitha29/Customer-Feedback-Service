@@ -7,7 +7,7 @@ public class Owner {
 	String ownerName;
 
 	public Owner() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public int getOwnerId() {

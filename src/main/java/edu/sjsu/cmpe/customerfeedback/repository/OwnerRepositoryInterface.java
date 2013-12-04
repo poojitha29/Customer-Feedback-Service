@@ -8,5 +8,5 @@ public interface OwnerRepositoryInterface {
 	
 	Owner saveOwner(Owner newOwner);
 	
-	Owner getOwnerbyOwnerID(int OwnerId);
+	/*Owner getOwnerbyOwnerID(int OwnerId);*/
 }

@@ -1,0 +1,17 @@
+<html>
+        <body>
+            <!-- calls getBooks() from HomeResource -->
+            <table border="1">
+            	<tr>
+            		<td>Product Image</td>
+            		<td>Product Name</td>
+            	</tr>
+            {{#products}}
+                <tr>
+                    <td><img class="img-thumbnail" height="80" width="80" src="{{coverImage}}"></td>
+                    <td>{{productName}}</td>                    
+                </tr>
+            {{/products}}
+            </table>
+        </body>
+</html>

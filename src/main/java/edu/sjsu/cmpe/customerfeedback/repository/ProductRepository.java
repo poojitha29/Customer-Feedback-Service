@@ -3,13 +3,14 @@
  */
 package edu.sjsu.cmpe.customerfeedback.repository;
 
+import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkNotNull;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
 import edu.sjsu.cmpe.customerfeedback.domain.Product;
-import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * @author Rajiv
@@ -18,6 +19,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class ProductRepository implements ProductRepositoryInterface {
 	private final ConcurrentHashMap<Integer, Product> productInMemoryMap;
 	private int productId;
+	
 	/**
 	 * 
 	 */
@@ -27,13 +29,14 @@ public class ProductRepository implements ProductRepositoryInterface {
 		productId = 0;
 	}
 
+	private final int generateProductId() {
+		return ++productId;		
+	}
+	
 	/* (non-Javadoc)
 	 * @see edu.sjsu.cmpe.customerfeedback.repository.ProductRepositoryInterface#saveProduct(edu.sjsu.cmpe.customerfeedback.domain.Product)
 	 */
 	
-	private final int generateProductId() {
-		return ++productId;		
-	}
 	@Override
 	public Product saveProduct(Product newProduct) {
 		checkNotNull(newProduct , "newProduct instance cannot be null");
@@ -53,11 +56,7 @@ public class ProductRepository implements ProductRepositoryInterface {
 	}
 	
 	public List<Product> getallProducts() {
-		List<Product> allProducts = new ArrayList<Product>();
-		for (int i = 1; i <= productInMemoryMap.size(); i++) {
-			allProducts.add(productInMemoryMap.get(i));
-		}
-		return allProducts;
+		return new ArrayList<Product>(productInMemoryMap.values());
 		
 	}
 
