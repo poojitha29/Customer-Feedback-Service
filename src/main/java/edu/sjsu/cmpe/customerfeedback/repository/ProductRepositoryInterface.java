@@ -12,4 +12,22 @@ public interface ProductRepositoryInterface {
 	
 	List<Product> getallProducts();
 
+	/**
+	 * @param isReviewable
+	 * @param productId
+	 */
+	void updateReviewable(boolean isReviewable, int productId);
+
+	/**
+	 * @param setTemplate
+	 * @param productId
+	 */
+	void updateTemplate(boolean setTemplate, int productId);
+
+	/**
+	 * @param ownerId
+	 * @return
+	 */
+	List<Product> getallProductsbyOwner(int ownerId);
+
 }

@@ -29,4 +29,13 @@ public class ReviewRepositoryInterface {
 		return null;
 	}
 
+	/**
+	 * @param reviewId
+	 * @return
+	 */
+	public Review getReview(int reviewId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
