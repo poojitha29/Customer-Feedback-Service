@@ -1,0 +1,21 @@
+<html>
+        <body>
+            <!-- calls getBooks() from HomeResource -->
+            <div align="center">
+            <table border="1">
+            	<tr>
+            		<td><font size="4.5"><pre><b>Reviewer</b></font></td>
+            		<td><font size="4.5"><pre><b>Review</b></font></td>
+            		<td><font size="4.5"><pre><b>Rating</b></font></td>
+            	</tr>
+            {{#reviews}}
+                <tr>
+                    <td><font size="4"><pre>{{reviewer}}</font></td>
+                    <td><font size="4"><pre>{{reviewText}}</font></td>
+                    <td><font size="4"><pre>{{TemplateText}}</font></td>                    
+                </tr>
+            {{/reviews}}
+            </table>
+            </div>
+        </body>
+</html>
