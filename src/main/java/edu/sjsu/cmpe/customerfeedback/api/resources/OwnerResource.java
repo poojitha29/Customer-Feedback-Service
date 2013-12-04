@@ -18,7 +18,7 @@ import edu.sjsu.cmpe.customerfeedback.dto.LinksDto;
 //import edu.sjsu.cmpe.customerfeedback.dto.OwnerDto;
 import edu.sjsu.cmpe.customerfeedback.repository.OwnerRepositoryInterface;
 
-@Path("/owners")
+@Path("/v1/owners")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 

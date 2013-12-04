@@ -21,7 +21,7 @@ import com.twilio.sdk.TwilioRestException;
 
 import edu.sjsu.cmpe.customerfeedback.domain.Product;
 import edu.sjsu.cmpe.customerfeedback.jdbi.CustomMongo;
-
+import edu.sjsu.cmpe.customerfeedback.notification.Notification;
 
 
 /**
@@ -34,7 +34,8 @@ public class ProductRepository implements ProductRepositoryInterface {
 	private DB db;
 	private DBCollection productTable;
 	private CustomMongo mongo;
-	
+	private final Notification notification;
+	ExecutorService executor;
 	
 	/**
 	 * 
@@ -49,6 +50,8 @@ public class ProductRepository implements ProductRepositoryInterface {
 		} catch (Exception e) {
 			System.out.println("Can't connect");
 		}
+		executor = Executors.newFixedThreadPool(20);
+		notification = new Notification();
 	}
 
 	private final int generateProductId() {
@@ -72,7 +75,18 @@ public class ProductRepository implements ProductRepositoryInterface {
 		DBObject tempProduct = mongo.toDbObject(newProduct);
 		productTable.insert(tempProduct);
 		final Product product = newProduct;
-		
+		Runnable notify  = new Runnable() {			
+			@Override
+			public void run() {
+				try {
+					notification.notifyProductInfo(product.getProductId(),1);
+				} catch (TwilioRestException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}				
+			}
+		};
+		//executor.execute(notify);
 		return newProduct;
 	}
 
@@ -127,7 +141,18 @@ public class ProductRepository implements ProductRepositoryInterface {
 		BasicDBObject searchQuery = new BasicDBObject().append("productId", productId);
 		productTable.update(searchQuery, updateReviewable);
 		final int id = productId;
-		
+		Runnable notify  = new Runnable() {			
+			@Override
+			public void run() {
+				try {
+					notification.notifyProductInfo(id,2);
+				} catch (TwilioRestException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}				
+			}
+		};
+		//executor.execute(notify);
 	}
 	
 	@Override
@@ -137,7 +162,18 @@ public class ProductRepository implements ProductRepositoryInterface {
 		BasicDBObject searchQuery = new BasicDBObject().append("productId", productId);
 		productTable.update(searchQuery, updateReviewable);
 		final int id = productId;
-		
+		Runnable notify  = new Runnable() {			
+			@Override
+			public void run() {
+				try {
+					notification.notifyProductInfo(id,3);
+				} catch (TwilioRestException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}				
+			}
+		};
+		//executor.execute(notify);
 	}
 	
 

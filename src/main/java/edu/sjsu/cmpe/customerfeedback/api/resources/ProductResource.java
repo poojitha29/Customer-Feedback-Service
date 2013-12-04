@@ -32,7 +32,7 @@ import edu.sjsu.cmpe.customerfeedback.repository.ProductRepositoryInterface;
  *
  */
 
-@Path("owners/{ownerId}/products")
+@Path("/v1/owners/{ownerId}/products")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 
@@ -43,6 +43,7 @@ public class ProductResource {
 	 */
 	public ProductResource(ProductRepositoryInterface productRepository) {
 		this.productRepository = productRepository;
+		//notification = new Notification();
 	}
 
 	@POST
@@ -59,7 +60,7 @@ public class ProductResource {
 	@GET
 	@Timed(name = "view-products-by-owner")
 	public Response viewProductsOfOwner(@PathParam("ownerId") int ownerId) {
-		List<Product> allProducts = productRepository.getallProducts();
+		List<Product> allProducts = productRepository.getallProductsbyOwner(ownerId);
 		ProductsDto links = new ProductsDto(allProducts);
 		for (int i = 0; i< allProducts.size(); i++)
 		links.addLink(new LinkDto("view-product", "/owners/"+ownerId+"/products/"+allProducts.get(i).getProductId(), "GET"));
@@ -80,9 +81,18 @@ public class ProductResource {
 	@PUT
 	@Path("/{productId}")
 	@Timed(name = "set-reviewable")
-	public Response setReviewable(@PathParam("productId") int productId, @PathParam("ownerId") int ownerId, @QueryParam("canReview") boolean value) {
-		Product product = productRepository.getProductbyProductId(productId);
-		product.setCanReview(value);
+	public Response setReviewable(@PathParam("productId") int productId, @PathParam("ownerId") int ownerId, @QueryParam("canReview") boolean isReviewable) {
+		productRepository.updateReviewable(isReviewable,productId);
+		LinksDto links = new LinksDto();
+		links.addLink(new LinkDto("view-product-by-owner", "/owners/"+ownerId+"/products/"+productId , "GET"));
+		return Response.ok().entity(links).build();
+	}
+	
+	@PUT
+	@Path("/{productId}/canReview/true")
+	@Timed(name = "set-template")
+	public Response setTemplate(@PathParam("productId") int productId, @PathParam("ownerId") int ownerId, @QueryParam("setTemplate") boolean setTemplate) {
+		productRepository.updateTemplate(setTemplate, productId);
 		LinksDto links = new LinksDto();
 		links.addLink(new LinkDto("view-product-by-owner", "/owners/"+ownerId+"/products/"+productId , "GET"));
 		return Response.ok().entity(links).build();

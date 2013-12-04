@@ -16,7 +16,7 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
-
+import com.twilio.sdk.TwilioRestException;
 
 
 import edu.sjsu.cmpe.customerfeedback.domain.Review;
@@ -32,6 +32,8 @@ public class ReviewRepository extends ReviewRepositoryInterface {
 	private DB db;
 	private DBCollection reviewTable;
 	private CustomMongo mongo;
+	private Notification notification;
+	ExecutorService executor;
 	/**
 	 * @param reviewInMemoryMap
 	 */
@@ -44,6 +46,8 @@ public class ReviewRepository extends ReviewRepositoryInterface {
 		} catch (Exception e) {
 			System.out.println("Can't connect");
 		}
+		executor = Executors.newFixedThreadPool(10);
+		notification = new Notification();
 	}
 	
 	@Override
@@ -52,6 +56,18 @@ public class ReviewRepository extends ReviewRepositoryInterface {
 		DBObject tempReview = mongo.toDbObject(newReview);
 		reviewTable.insert(tempReview);
 		final Review review = newReview;
+		Runnable notify  = new Runnable() {			
+			@Override
+			public void run() {
+				try {
+					notification.notifyProductReviewed(review);
+				} catch (TwilioRestException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}				
+			}
+		};
+		//executor.execute(notify);
 	 }
 	 
 	@Override
