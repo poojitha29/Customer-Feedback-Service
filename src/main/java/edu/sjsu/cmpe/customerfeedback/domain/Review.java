@@ -3,6 +3,8 @@
  */
 package edu.sjsu.cmpe.customerfeedback.domain;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 /**
  * @author Rajiv
  *
@@ -10,22 +12,12 @@ package edu.sjsu.cmpe.customerfeedback.domain;
 public class Review {
 	
 	private int productId;
+	@NotEmpty
 	private String templateText;
+	@NotEmpty
 	private String reviewText;
-	private int reviewId;
+	private String reviewer = "Anonymous";
 	
-	/**
-	 * @return the reviewId
-	 */
-	public int getReviewId() {
-		return reviewId;
-	}
-	/**
-	 * @param reviewId the reviewId to set
-	 */
-	public void setReviewId(int reviewId) {
-		this.reviewId = reviewId;
-	}
 	/**
 	 * @return the productId
 	 */
@@ -37,6 +29,18 @@ public class Review {
 	 */
 	public void setProductId(int productId) {
 		this.productId = productId;
+	}
+	/**
+	 * @return the reviewer
+	 */
+	public String getReviewer() {
+		return reviewer;
+	}
+	/**
+	 * @param reviewer the reviewer to set
+	 */
+	public void setReviewer(String reviewer) {
+		this.reviewer = reviewer;
 	}
 	/**
 	 * @return the templateText
