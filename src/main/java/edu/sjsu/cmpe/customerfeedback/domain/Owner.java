@@ -1,10 +1,14 @@
 package edu.sjsu.cmpe.customerfeedback.domain;
+
 import org.hibernate.validator.constraints.NotEmpty;
+
 public class Owner {
 	
-	int ownerId;
+	private int ownerId;
 	@NotEmpty
-	String ownerName;
+	private String ownerName;
+	@NotEmpty
+	private String phoneNumber="";
 
 	public Owner() {
 		
@@ -26,6 +30,18 @@ public class Owner {
 		this.ownerName = ownerName;
 	}
 
-	
-	
+	/**
+	 * @return the phoneNumber
+	 */
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	/**
+	 * @param phoneNumber the phoneNumber to set
+	 */
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+		
 }
