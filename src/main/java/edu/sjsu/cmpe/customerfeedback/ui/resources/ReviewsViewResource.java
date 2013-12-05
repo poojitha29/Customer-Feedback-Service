@@ -1,20 +1,20 @@
 package edu.sjsu.cmpe.customerfeedback.ui.resources;
 
 import javax.ws.rs.FormParam;
-import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import edu.sjsu.cmpe.customerfeedback.domain.Review;
 import edu.sjsu.cmpe.customerfeedback.repository.ReviewRepositoryInterface;
-import edu.sjsu.cmpe.customerfeedback.ui.views.ReviewsView;
 
 
-	@Path("/owners/{ownerId}/products/{productId}/canReview/{canReview}/reviews")
+	@Path("/users/{userName}/products/{productId}/canReview/{canReview}/reviews")
 	@Produces(MediaType.TEXT_HTML)
 	public class ReviewsViewResource {
 
@@ -23,18 +23,18 @@ import edu.sjsu.cmpe.customerfeedback.ui.views.ReviewsView;
 			this.reviewRepository = reviewRepository;
 		}
 		
-		@GET
+		/*@GET
 		public ReviewsView getAllReviews(@PathParam("productId") int productId) {		
 			return new ReviewsView(reviewRepository.getAllReviews(productId));
-		}
+		}*/
 		
 		
 		@POST
 		public Response createReview(@PathParam("canReview") boolean canReview,
 				@PathParam("productId") int productId,
+				@PathParam("userName") String reviewer,
 				@FormParam("reviewText") String reviewText, 
-				@FormParam("templateText") String templateText, 
-				@FormParam("reviewer") String reviewer){
+				@FormParam("templateText") String templateText){
 			if (canReview) {
 				Review newReview = new Review();
 				newReview.setReviewText(reviewText);
@@ -48,7 +48,15 @@ import edu.sjsu.cmpe.customerfeedback.ui.views.ReviewsView;
 			}
 			String Message = "Cannot add reviews to this product!";
 			return Response.status(405).entity(Message).build();
-		}		
+		}	
+		
+		@PUT
+		@Path("/{reviewId}")
+		public Response updateHelpfulness(@PathParam("reviewId") int reviewId, @QueryParam("isHelpful") boolean isHelpful) {
+			System.out.println("Put for helpfulness");
+			reviewRepository.updateHelpfulness(isHelpful, reviewId);
+			return Response.ok().build();			
+		}
 	}
 
 

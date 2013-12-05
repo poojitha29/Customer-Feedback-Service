@@ -25,7 +25,7 @@ import edu.sjsu.cmpe.customerfeedback.repository.UserRepositoryInterface;
 import edu.sjsu.cmpe.customerfeedback.ui.resources.HomeResource;
 import edu.sjsu.cmpe.customerfeedback.ui.resources.OwnerViewResource;
 import edu.sjsu.cmpe.customerfeedback.ui.resources.ProductViewResource;
-import edu.sjsu.cmpe.customerfeedback.ui.resources.ProductsViewResource;
+import edu.sjsu.cmpe.customerfeedback.ui.resources.CustomerViewResource;
 import edu.sjsu.cmpe.customerfeedback.ui.resources.ReviewsViewResource;
 
 public class CustomerFeedbackSevice extends Service<CustomerFeedbackServiceConfiguration> {
@@ -59,9 +59,8 @@ public class CustomerFeedbackSevice extends Service<CustomerFeedbackServiceConfi
 	/** UI Resources */
 	UserRepositoryInterface userRepository = new UserRepository();
 	environment.addResource(new HomeResource(userRepository, ownerRepository));
-	environment.addResource(new OwnerViewResource(productRepository));
-	environment.addResource(new ProductViewResource(productRepository));
-	environment.addResource(new ProductsViewResource(productRepository));
+	environment.addResource(new OwnerViewResource(productRepository,reviewRepository));
+	environment.addResource(new CustomerViewResource(productRepository, reviewRepository, userRepository));
 	environment.addResource(new ReviewsViewResource(reviewRepository));
 	/** Add new resources here */
 		

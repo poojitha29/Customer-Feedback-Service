@@ -15,7 +15,8 @@ $(":button").click(function() {
 				  location.reload();
 			  }
 			});
-	}	
+	}
+	
 	if (buttontype=="SetTemplate") {
 		if(this.firstChild.nodeValue == "Set 5-Star Rating")
 		$.ajax({
@@ -38,7 +39,36 @@ $(":button").click(function() {
 					  location.reload();
 				  }
 				});
-	}	
+	}
+	
+	if (buttontype=="Helpfulness") {
+		//alert("Helpfulness?");
+		if(this.firstChild.nodeValue == "Yes")
+			$.ajax({
+				  url: '../../'+ownerId+'/canReview/true/reviews/'+productId+'?isHelpful=true',
+				  type: 'PUT',
+				  contentType:"application/json",
+				  success: function(data) {
+				    //alert('Like/Unlike template selected');
+					  location.reload();
+				  }
+				});
+
+		
+		if(this.firstChild.nodeValue == "No")
+			$.ajax({
+				  url: '../../'+ownerId+'/canReview/true/reviews/'+productId+'?isHelpful=false',
+				  type: 'PUT',
+				  contentType:"application/json",
+				  success: function(data) {
+				    //alert('Like/Unlike template selected');
+					  location.reload();
+				  }
+				});
+	}
+	
+	
+	
 });
 
 /*$("#submit").click(function() {

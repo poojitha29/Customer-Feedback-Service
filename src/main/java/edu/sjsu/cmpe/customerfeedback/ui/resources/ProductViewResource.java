@@ -18,8 +18,8 @@ public class ProductViewResource {
 		this.productRepository = productRepository;
 	}
 	
-	@GET
+	/*@GET
 	public ProductView getProductbyOwner(@PathParam("productId") int productId){		
 		return new ProductView(productRepository.getProductbyProductId(productId));
-	}	
+	}*/	
 }
