@@ -16,7 +16,7 @@
                 	<td><pre>{{ownerId}}</td>
                 	<td><pre>{{productId}}</td>
                     <td><pre><img class="img-thumbnail" height="80" width="80" src="{{coverImage}}"></td>
-                    <td><pre>{{productName}}</td>
+                    <td><pre><a href="./products/{{productId}}/reviews/default">{{productName}}</a></td>
                     <td><pre>{{#canReview}}Reviewable{{/canReview}}{{^canReview}}<button id="{{ownerId}}-Reviewable-{{productId}}" type="button" class="btn btn-primary">Set Reviewable</button>{{/canReview}}</td>
                     <td><pre>{{#canReview}}{{^whichTemplate}}5-Star Rating{{/whichTemplate}}{{#whichTemplate}}Like/Unlike{{/whichTemplate}}{{/canReview}}</td>
                     <td><pre>{{#canReview}}<button id="{{ownerId}}-SetTemplate-{{productId}}" type="button" class="btn btn-primary">{{^whichTemplate}}Set Like/Unlike{{/whichTemplate}}{{#whichTemplate}}Set 5-Star Rating{{/whichTemplate}}{{/canReview}}</button></td>

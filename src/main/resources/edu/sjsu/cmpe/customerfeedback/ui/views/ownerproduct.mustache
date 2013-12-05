@@ -27,31 +27,6 @@
             </table>
 
             </div>
-            
-            <div align="center">
-            <form method="POST" action = "../../{{product.productId}}/canReview/{{product.canReview}}/reviews" onsubmit="setTimeout(function () { window.location = './default'; }, 10)" >
-            <br><select name="templateText">
-			{{#product.whichTemplate}}
-			<option value="like" selected>Like</option>
-			<option value="dislike">Unlike</option>
-			{{/product.whichTemplate}}
-			{{^product.whichTemplate}}
-			<option value="5" selected>5 Star</option>
-			<option value="4">4 Star</option>
-			<option value="3">3 Star</option>
-			<option value="2">2 Star</option>
-			<option value="1">1 Star</option>
-			{{/product.whichTemplate}}
-			</select>
-            <pre>Add a new Review	&nbsp<input type="text" name="reviewText" placeholder="Review Here" >
-            
-            <br><input type="submit" name="submit">
-			</form>
-			</div>
-			
-		<script src="//code.jquery.com/jquery.js"></script>
-		<script src="/assets/js/app.js"></script>
-            
 			
         </body>
 </html>
