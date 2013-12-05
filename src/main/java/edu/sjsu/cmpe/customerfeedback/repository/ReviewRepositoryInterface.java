@@ -24,7 +24,7 @@ public class ReviewRepositoryInterface {
 	/**
 	 * @return
 	 */
-	public ArrayList<Review> getAllReviews() {
+	public ArrayList<Review> getAllReviews(int productId) {
 		// TODO Auto-generated method stub
 		return null;
 	}

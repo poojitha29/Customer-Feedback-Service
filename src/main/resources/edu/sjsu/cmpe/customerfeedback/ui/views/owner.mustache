@@ -1,4 +1,5 @@
 <html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <body>
             <table border="1">
             	<tr>
@@ -16,12 +17,24 @@
                 	<td>{{productId}}</td>
                     <td><img class="img-thumbnail" height="80" width="80" src="{{coverImage}}"></td>
                     <td>{{productName}}</td>
-                    <td>{{#canReview}}Reviewable{{/canReview}}{{^canReview}}<button id="{{ownerId}}{{productId}}Review" type="button" class="btn btn-primary">Set Reviewable</button>{{/canReview}}</td>
+                    <td>{{#canReview}}Reviewable{{/canReview}}{{^canReview}}<button id="{{ownerId}}-Reviewable-{{productId}}" type="button" class="btn btn-primary">Set Reviewable</button>{{/canReview}}</td>
                     <td>{{#canReview}}{{^whichTemplate}}5-Star Rating{{/whichTemplate}}{{#whichTemplate}}Like/Unlike{{/whichTemplate}}{{/canReview}}</td>
-                    <td>{{#canReview}}<button id="{{ownerId}}{{productId}}Template" type="button" class="btn btn-primary">{{^whichTemplate}}Set Like/Unlike{{/whichTemplate}}{{#whichTemplate}}Set 5-Star Rating{{/whichTemplate}}{{/canReview}}</button></td>
-                    <td><input name="star1" type="radio" class="star"/> <input name="star1" type="radio" class="star"/> <input name="star1" type="radio" class="star"/> <input name="star1" type="radio" class="star"/> <input name="star1" type="radio" class="star"/></td>
+                    <td>{{#canReview}}<button id="{{ownerId}}-SetTemplate-{{productId}}" type="button" class="btn btn-primary">{{^whichTemplate}}Set Like/Unlike{{/whichTemplate}}{{#whichTemplate}}Set 5-Star Rating{{/whichTemplate}}{{/canReview}}</button></td>
+                    <!--<td><input name="star1" type="radio" class="star"/> <input name="star1" type="radio" class="star"/> <input name="star1" type="radio" class="star"/> <input name="star1" type="radio" class="star"/> <input name="star1" type="radio" class="star"/></td>-->
                 </tr>
             {{/products}}
             </table>
+            
+            <form formenctype=text/plain">
+            Add a new product<input type="text" name="productName" placeholder="Product Name" >
+            <input type="text" name="coverImage" placeholder="Product URL"  >
+            <input type="submit" name="submit" formmethod="post" >
+			</form>
+			
+            <script src="//code.jquery.com/jquery.js"></script>
+            <!-- Latest compiled and minified JavaScript -->
+            <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+            <!-- application ui scripts -->
+			<script src="/assets/js/app.js"></script>
         </body>
 </html>
