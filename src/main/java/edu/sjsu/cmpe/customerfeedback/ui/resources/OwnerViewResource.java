@@ -79,13 +79,31 @@ import edu.sjsu.cmpe.customerfeedback.ui.views.ReportView;
 				productIds.add(product.getProductId());
 			}
 			reportValues = reviewRepository.generateReport(productIds);
-			String Product1Name = productRepository.getProductbyProductId(Integer.parseInt(reportValues.get(0))).getProductName();
-			String Product2Name = productRepository.getProductbyProductId(Integer.parseInt(reportValues.get(2))).getProductName();
+			int product1Id = Integer.parseInt(reportValues.get(0));
+			int product2Id = Integer.parseInt(reportValues.get(2));
+			
+			String Product1Name;
+			String Product2Name;
+			if (product1Id>0&&product2Id>0) {
+				Product1Name = productRepository.getProductbyProductId(
+						product1Id).getProductName();
+				Product2Name = productRepository.getProductbyProductId(
+						product2Id).getProductName();
+				reportValues.remove(0);
+				reportValues.add(0, Product1Name);
+				reportValues.remove(2);
+				reportValues.add(2, Product2Name);
+			}
+			else {
+				reportValues.clear();
+				reportValues.add("None");
+				reportValues.add("0");
+				reportValues.add("None");
+				reportValues.add("0");
+				reportValues.add("None");
+			}
 			System.out.println(reportValues);
-			reportValues.remove(0);
-			reportValues.add(0, Product1Name);
-			reportValues.remove(2);
-			reportValues.add(2, Product2Name);
+			
 			System.out.println(reportValues);
 			return new ReportView(reportValues);
 		} 
