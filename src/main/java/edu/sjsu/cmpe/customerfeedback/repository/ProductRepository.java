@@ -17,6 +17,7 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
+import com.mongodb.ServerAddress;
 import com.twilio.sdk.TwilioRestException;
 
 import edu.sjsu.cmpe.customerfeedback.domain.Product;
@@ -43,8 +44,11 @@ public class ProductRepository implements ProductRepositoryInterface {
 	public ProductRepository() {
 		mongo = new CustomMongo();
 		try {
-			MongoClient mongoclient = new MongoClient("localhost", 27017);
-			db = mongoclient.getDB("testLib");
+			MongoClient mongoclient = new MongoClient(new ServerAddress(
+					"ds053638.mongolab.com", 53638));
+			db = mongoclient.getDB("customerfeedback");
+			if(db.authenticate("rajiv", "rajiv".toCharArray()))
+				System.out.println("Connection Successful");
 			productTable = db.getCollection("productTable");
 			productId = (int) productTable.getCount();
 		} catch (Exception e) {
