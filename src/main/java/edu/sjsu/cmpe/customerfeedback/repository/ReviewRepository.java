@@ -7,6 +7,8 @@ import static com.google.common.base.Preconditions.checkArgument;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -17,6 +19,8 @@ import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.twilio.sdk.TwilioRestException;
+
+
 
 
 
@@ -40,12 +44,12 @@ public class ReviewRepository extends ReviewRepositoryInterface {
 	 * @param reviewInMemoryMap
 	 */
 	public ReviewRepository() {
-		reviewId = 0;
 		mongo = new CustomMongo();
 		try {
 			MongoClient mongoclient = new MongoClient("localhost", 27017);
 			db = mongoclient.getDB("testLib");
 			reviewTable = db.getCollection("reviewTable");
+			reviewId = (int) reviewTable.getCount();
 		} catch (Exception e) {
 			System.out.println("Can't connect");
 		}
@@ -154,5 +158,92 @@ public class ReviewRepository extends ReviewRepositoryInterface {
 		reviewTable.update(searchQuery, updateHelpful);
 		reviewTable.update(searchQuery, updateUnhelpful);		
 	}
+	
+	@Override
+	public List<String> generateReport(List<Integer> productIds) {
+		List<String> Report = new ArrayList<String>();
+		ConcurrentHashMap<Integer, Float> popularityIndex = new ConcurrentHashMap<Integer, Float>();
+		ConcurrentHashMap<String, Integer> frequentReviewer = new ConcurrentHashMap<String, Integer>();
+		int mostPopularItem =-1, leastPopularItem =-1;
+		double leastPopularvalue = 5, mostPopularValue = 0, mostReviews=0;
+		String freqReviewer = "";
+		for (int i : productIds){
+			popularityIndex.put(i, generatePopularityIndex(i));
+		}	
+		
+		for (int i: productIds) {
+			float value = popularityIndex.get(i);
+			if(value<=leastPopularvalue) {
+				leastPopularItem = i;
+				leastPopularvalue = value;
+			}
+			else if(value>=mostPopularValue) {
+				mostPopularItem = i;
+				mostPopularValue = value;
+			}
+		}
+		
+		for (int i : productIds) {
+			List<Review> reviews = getAllReviews(i);
+			for(Review review: reviews) {
+				if (frequentReviewer.containsKey(review.getReviewer()))
+					frequentReviewer.put(review.getReviewer(), frequentReviewer.get(review.getReviewer())+1);
+				else
+					frequentReviewer.put(review.getReviewer(), 1);
+			}			
+		}
+
+		for (String s: frequentReviewer.keySet()) {
+			int value = frequentReviewer.get(s);
+			System.out.println(value);
+			if(value > mostReviews) {
+				mostReviews = value;
+				freqReviewer = s;
+			}
+		}
+		System.out.println("Most"+mostPopularItem+mostPopularValue+"\tLeast"+leastPopularItem+leastPopularvalue+"\tFreq"+freqReviewer);		
+		System.out.println(popularityIndex);
+		System.out.println(frequentReviewer);
+		Report.add(""+mostPopularItem);
+		Report.add((""+mostPopularValue).substring(0, 3));
+		Report.add(""+leastPopularItem);
+		Report.add((""+leastPopularvalue).substring(0, 3));
+		Report.add(freqReviewer);		
+		return Report;
+	}
+	
+	
+	
+	public float generatePopularityIndex( int productId) {
+		float popularityIndex;//= 0.00;
+		List<Review> reviews = getAllReviews(productId);
+		System.out.println(reviews);
+		Review tempReview = new Review();
+		int total = 0;
+		int rating,likes =0 ,unlikes =0;
+		for (int i=0; i<reviews.size(); i++) {
+			tempReview = reviews.get(i);
+			if(tempReview.getTemplateText().length()<4) {
+				rating = Integer.parseInt(tempReview.getTemplateText());
+				total += rating;
+			}
+			else {
+				if (tempReview.getTemplateText().equalsIgnoreCase("Like"))
+					likes += 1;
+				else 
+					unlikes += 1;
+			}
+		}
+		
+		if(tempReview.getTemplateText().length()<4)
+			popularityIndex = (float)total/reviews.size();
+		else
+			popularityIndex = (float)likes*5/(likes+unlikes);
+		System.out.println("Likes:"+likes+ "Unlikes:"+unlikes+ "Sum:"+total);
+		System.out.println("Popularity index"+popularityIndex);		
+		return popularityIndex;
+	} 
+	
+	
 
 }

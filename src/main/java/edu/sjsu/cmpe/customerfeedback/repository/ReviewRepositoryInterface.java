@@ -4,6 +4,7 @@
 package edu.sjsu.cmpe.customerfeedback.repository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import edu.sjsu.cmpe.customerfeedback.domain.Review;
 
@@ -49,6 +50,11 @@ public class ReviewRepositoryInterface {
 	}
 
 	public ArrayList<Review> getAllReviewsbyRecent(int productId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List<String> generateReport(List<Integer> productIds) {
 		// TODO Auto-generated method stub
 		return null;
 	}

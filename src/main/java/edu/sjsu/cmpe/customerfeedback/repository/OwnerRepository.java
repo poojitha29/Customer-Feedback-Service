@@ -26,6 +26,7 @@ public class OwnerRepository implements OwnerRepositoryInterface {
 			MongoClient mongoclient = new MongoClient("localhost", 27017);
 			db = mongoclient.getDB("testLib");
 			ownerTable = db.getCollection("ownerTable");
+			ownerId = (int) ownerTable.getCount();
 		} catch (Exception e) {
 			System.out.println("Can't connect");
 		}

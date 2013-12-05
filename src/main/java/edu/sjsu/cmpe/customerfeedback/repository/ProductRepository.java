@@ -41,12 +41,12 @@ public class ProductRepository implements ProductRepositoryInterface {
 	 * 
 	 */
 	public ProductRepository() {
-		productId = 0;
 		mongo = new CustomMongo();
 		try {
 			MongoClient mongoclient = new MongoClient("localhost", 27017);
 			db = mongoclient.getDB("testLib");
 			productTable = db.getCollection("productTable");
+			productId = (int) productTable.getCount();
 		} catch (Exception e) {
 			System.out.println("Can't connect");
 		}

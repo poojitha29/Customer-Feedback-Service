@@ -6,23 +6,23 @@
             <b><pre>Sort Reviews by: </b><a href="./default">Default Order</a> <a href="./helpfulness">Helpfulness</a> <a href="./recent">Recent</a></pre></div>
             <div align="center">
             <table border="1">
+            
             	<tr>
             		<td><font size="4.5"><pre><b>Reviewer</b></font></td>
             		<td><font size="4.5"><pre><b>Review</b></font></td>
             		<td><font size="4.5"><pre><b>Rating</b></font></td>
             		<td><font size="4.5"><pre><b>Helpfulness</b></font></td>
-            		<td><font size="4.5"><pre><b>Helpful?</b></font></td>
             	</tr>
+            	
             {{#reviews}}
+           
                 <tr>
                     <td><font size="4"><pre>{{reviewer}}</font></td>
                     <td><font size="4"><pre>{{reviewText}}</font></td>
                     <td><font size="4"><pre>{{TemplateText}}</font></td>  
-                    <td><font size="4"><pre>{{helpfulness}}%</font></td>
-                    <td><button id="{{productId}}-Helpfulness-{{reviewId}}-1" type="button" class="btn btn-primary">Yes</button>
-                    <button id="{{productId}}-Helpfulness-{{reviewId}}-0" type="button" class="btn btn-primary">No</button></td> 
-                                      
+                    <td><font size="4"><pre>{{helpfulness}}%</font></td>                                      
                 </tr>
+                
             {{/reviews}}
             </table>
 
