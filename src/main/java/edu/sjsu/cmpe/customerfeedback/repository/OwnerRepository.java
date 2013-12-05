@@ -7,6 +7,7 @@ import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
+import com.mongodb.ServerAddress;
 
 import edu.sjsu.cmpe.customerfeedback.domain.Owner;
 import edu.sjsu.cmpe.customerfeedback.jdbi.CustomMongo;
@@ -23,8 +24,11 @@ public class OwnerRepository implements OwnerRepositoryInterface {
 		ownerId = 0;
 		mongo = new CustomMongo();
 		try {
-			MongoClient mongoclient = new MongoClient("localhost", 27017);
-			db = mongoclient.getDB("testLib");
+			MongoClient mongoclient = new MongoClient(new ServerAddress(
+					"ds053638.mongolab.com", 53638));
+			db = mongoclient.getDB("customerfeedback");
+			if(db.authenticate("rajiv", "rajiv".toCharArray()))
+				System.out.println("Connection Successful");			
 			ownerTable = db.getCollection("ownerTable");
 			ownerId = (int) ownerTable.getCount();
 		} catch (Exception e) {
