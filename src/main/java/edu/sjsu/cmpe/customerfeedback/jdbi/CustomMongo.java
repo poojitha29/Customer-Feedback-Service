@@ -44,10 +44,14 @@ public class CustomMongo {
 	
 	public DBObject toDbObject(Review review) {
 		DBObject tempDbObject = new BasicDBObject();
+		tempDbObject.put("reviewId", review.getReviewId());
 		tempDbObject.put("productId", review.getProductId());
 		tempDbObject.put("templateText", review.getTemplateText());
 		tempDbObject.put("reviewText", review.getReviewText());
 		tempDbObject.put("reviewer", review.getReviewer());
+		tempDbObject.put("helpfulness", review.getHelpfulness());
+		tempDbObject.put("helpful", review.getHelpful());
+		tempDbObject.put("unhelpful", review.getUnhelpful());		
 		return tempDbObject;
 	}
 	
