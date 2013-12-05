@@ -18,7 +18,9 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
+import com.mongodb.ServerAddress;
 import com.twilio.sdk.TwilioRestException;
+
 
 
 
@@ -46,8 +48,11 @@ public class ReviewRepository extends ReviewRepositoryInterface {
 	public ReviewRepository() {
 		mongo = new CustomMongo();
 		try {
-			MongoClient mongoclient = new MongoClient("localhost", 27017);
-			db = mongoclient.getDB("testLib");
+			MongoClient mongoclient = new MongoClient(new ServerAddress(
+					"ds053638.mongolab.com", 53638));
+			db = mongoclient.getDB("customerfeedback");
+			if(db.authenticate("rajiv", "rajiv".toCharArray()))
+				System.out.println("Connection Successful");
 			reviewTable = db.getCollection("reviewTable");
 			reviewId = (int) reviewTable.getCount();
 		} catch (Exception e) {
