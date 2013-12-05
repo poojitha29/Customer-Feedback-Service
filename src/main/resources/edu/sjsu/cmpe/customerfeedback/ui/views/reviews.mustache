@@ -16,5 +16,14 @@
             {{/reviews}}
             </table>
             </div>
+            
+            <div align="center">
+            <form method="POST" onsubmit="setTimeout(function () { location.reload(); }, 10)" >
+            <br><pre>Add a new Review<br><input type="text" name="reviewText" placeholder="Review Here" >
+            <br><input type="text" name="templateText" placeholder="Like/Unlike or Rating">
+            <br><input type="text" name="reviewer" placeholder="Your Name">
+            <br><input type="submit" name="submit" >
+			</form>
+			</div>
         </body>
 </html>

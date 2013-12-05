@@ -1,5 +1,8 @@
 package edu.sjsu.cmpe.customerfeedback.repository;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+
+import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
 import com.mongodb.DBObject;
@@ -7,8 +10,6 @@ import com.mongodb.MongoClient;
 
 import edu.sjsu.cmpe.customerfeedback.domain.Owner;
 import edu.sjsu.cmpe.customerfeedback.jdbi.CustomMongo;
-//import static com.google.common.base.Preconditions.checkArgument;
-import static com.google.common.base.Preconditions.checkNotNull;
 
 
 public class OwnerRepository implements OwnerRepositoryInterface {
@@ -51,5 +52,15 @@ public class OwnerRepository implements OwnerRepositoryInterface {
 		return ownerInMemoryMap.get(ownerId);
 		
 	}*/
+	
+	@Override
+	public Owner getOwnerbyOwnerName(String ownerName) {
+		checkNotNull(ownerName, "Owner Name cannot be null");
+		Owner tempOwner = new Owner();
+		DBObject owner = ownerTable.findOne(new BasicDBObject("ownerName", ownerName), new BasicDBObject("_id", false));
+		if(!(owner == null))
+			tempOwner = mongo.toOwnerObject(owner.toString());
+		return tempOwner;
+	}
 
 }

@@ -29,7 +29,7 @@ import edu.sjsu.cmpe.customerfeedback.repository.ReviewRepositoryInterface;
  *
  */
 
-@Path("/v1/owners/{ownerId}/products/{productId}/")
+@Path("/v1/owners/{ownerId}/products/{productId}/canReview/{canReview}/reviews/")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 
@@ -44,7 +44,7 @@ public class ReviewResource {
 	}
 	
 	@POST
-	@Path("canReview/{canReview}/reviews/")
+	//@Path("")
 	@Timed(name = "create-review")
 	public Response createReview(@PathParam("ownerId") int ownerId, @PathParam("canReview") boolean canReview, @PathParam("productId") int productId,@Valid Review request) throws TwilioRestException{
 		if (canReview) {
@@ -61,10 +61,9 @@ public class ReviewResource {
 	
 	
 	@GET
-	@Path("reviews/")
-	@Timed(name = "view-all-reviews-by-owner")
-	public Response getAllReviewsbyOwner() {
-		ArrayList<Review> reviews = reviewRepository.getAllReviews(); 
+	@Timed(name = "view-all-reviews")
+	public Response getAllReviews(@PathParam("productId") int productId) {
+		ArrayList<Review> reviews = reviewRepository.getAllReviews(productId); 
 		ReviewsDto reviewResponse = new ReviewsDto(reviews);
 		return Response.status(200).entity(reviewResponse).build();
 	}

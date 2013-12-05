@@ -15,6 +15,7 @@ import com.mongodb.DBObject;
 import edu.sjsu.cmpe.customerfeedback.domain.Owner;
 import edu.sjsu.cmpe.customerfeedback.domain.Product;
 import edu.sjsu.cmpe.customerfeedback.domain.Review;
+import edu.sjsu.cmpe.customerfeedback.domain.User;
 
 /**
  * @author Rajiv
@@ -47,6 +48,15 @@ public class CustomMongo {
 		tempDbObject.put("templateText", review.getTemplateText());
 		tempDbObject.put("reviewText", review.getReviewText());
 		tempDbObject.put("reviewer", review.getReviewer());
+		return tempDbObject;
+	}
+	
+	public DBObject toDbObject(User newUser) {
+		DBObject tempDbObject = new BasicDBObject();
+		tempDbObject.put("userName", newUser.getUserName());
+		tempDbObject.put("owner", newUser.isOwner());
+		tempDbObject.put("password", newUser.getPassword());
+		tempDbObject.put("phoneNumber", newUser.getPhoneNumber());
 		return tempDbObject;
 	}
 	
@@ -99,5 +109,22 @@ public class CustomMongo {
 			e.printStackTrace();
 		}
 		return tempReview;
+	}
+
+	public User toUserObject(String jsonString) {
+		User tempUser = new User();
+		try {
+			tempUser = new ObjectMapper().readValue(jsonString, User.class);
+		} catch (JsonParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return tempUser;
 	}
 }

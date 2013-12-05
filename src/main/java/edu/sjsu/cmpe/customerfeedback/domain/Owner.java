@@ -4,11 +4,11 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 public class Owner {
 	
-	private int ownerId;
+	int ownerId;
 	@NotEmpty
-	private String ownerName;
+	String ownerName;
 	@NotEmpty
-	private String phoneNumber="";
+	String phoneNumber="";
 
 	public Owner() {
 		
@@ -43,5 +43,9 @@ public class Owner {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-		
+	
+	
+
+	
+	
 }

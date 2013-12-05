@@ -1,0 +1,19 @@
+<body>
+{{#AuthenticUser}}
+	{{#user.owner}}
+		<script>		
+        window.location = '/cust-feedback/owners/{{owner.ownerId}}/products';    	
+		</script>
+	{{/user.owner}}
+	{{^user.owner}}
+		<script>		
+        window.location = '/cust-feedback/users/{{user.userName}}/products'
+		</script>
+	{{/user.owner}}
+{{/AuthenticUser}}
+{{^AuthenticUser}}
+	<font size="48">Authentication failed</font>
+{{/AuthenticUser}}
+<script src="//code.jquery.com/jquery.js"></script>
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+</body>

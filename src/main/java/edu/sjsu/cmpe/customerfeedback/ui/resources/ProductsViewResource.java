@@ -8,7 +8,7 @@ import javax.ws.rs.core.MediaType;
 import edu.sjsu.cmpe.customerfeedback.repository.ProductRepositoryInterface;
 import edu.sjsu.cmpe.customerfeedback.ui.views.ProductsView;
 
-@Path("/products")
+@Path("users/{userName}/products")
 @Produces(MediaType.TEXT_HTML)
 public class ProductsViewResource {
 

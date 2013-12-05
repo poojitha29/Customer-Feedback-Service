@@ -6,10 +6,30 @@
         <td><button id="1" type="button" class="btn btn-primary">Products</button></td>
         <td><button id="2" type="button" class="btn btn-primary">Owners Home</button></td>
         </tr>
-        
+
+            <form method="POST" onsubmit="setTimeout(function () { window.location.reload(); }, 10)" >
+            <br><pre><b>New User? Please Register<b>
+            <br><select name="userType">
+			<option value="customer" selected>Customer</option>
+			<option value="owner">Owner</option>
+			</select>
+            <br><input type="text" name="userName" placeholder="User Name" >
+            <br><input type="text" name="phoneNumber" placeholder="10-Digit Phone Number">
+            <br><input type="password" name="password" placeholder="Password">
+            <br><input type="submit" name="register" value="Register">
+			</form>
+			
+            <form method="POST"  id="login">
+            <br><pre>Registered User<br><input type="text" name="userName" placeholder="User Name" >
+            <br><input type="password" name="password" placeholder="Password">
+            <br><input type="submit" name="submit" value="Login">
+			</form>
+
 		<script type="text/javascript">
         	document.getElementById("1").onclick = function () { alert('Products'); window.location = '/cust-feedback/products' };
         	document.getElementById("2").onclick = function () { alert('Products by Owner'); window.location = '/cust-feedback/owners/1/products' };
 		</script>
+		<script src="//code.jquery.com/jquery.js"></script>
+		<script src="/assets/js/app.js"></script>
     </body>
 </html>

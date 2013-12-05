@@ -3,13 +3,20 @@
  */
 package edu.sjsu.cmpe.customerfeedback.domain;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 /**
  * @author Rajiv
  *
  */
 public class User {
-	private String userName;
-	private String userType;
+	@NotEmpty
+	private String userName="";
+	@NotEmpty
+	private String password;
+	@NotEmpty
+	private String phoneNumber;
+	private boolean owner;
 	/**
 	 * @return the userName
 	 */
@@ -23,23 +30,49 @@ public class User {
 		this.userName = userName;
 	}
 	/**
-	 * @return the userType
+	 * @return the password
 	 */
-	public String getUserType() {
-		return userType;
+	public String getPassword() {
+		return password;
 	}
 	/**
-	 * @param userType the userType to set
+	 * @param password the password to set
 	 */
-	public void setUserType(String userType) {
-		this.userType = userType;
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	/**
+	 * @return the phoneNumber
+	 */
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	/**
+	 * @param phoneNumber the phoneNumber to set
+	 */
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+	/**
+	 * @return the owner
+	 */
+	public boolean isOwner() {
+		return owner;
+	}
+	/**
+	 * @param owner the owner to set
+	 */
+	public void setOwner(boolean owner) {
+		this.owner = owner;
 	}
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "User [userName=" + userName + ", userType=" + userType + "]";
+		return "User [userName=" + userName + ", password=" + password
+				+ ", phoneNumber=" + phoneNumber + ", owner=" + owner
+				+ "]";
 	}
 	
 

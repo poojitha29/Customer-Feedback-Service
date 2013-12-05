@@ -27,7 +27,6 @@ public class Notification {
 	private String reviewer;
 	private String reviewText;
 	private final TwilioNotification twilio;
-	private final String header;
 
 	public Notification() {
 		product = new Product();
@@ -42,11 +41,6 @@ public class Notification {
 		} catch (Exception e) {
 			System.out.println("Can't connect");
 		}
-		header = "###########\n"
-				+"##Customer##\n"
-				+"##Feedback##\n"
-				+"###Service###\n"
-				+"###########\n";
 		
 	}
 	
@@ -55,32 +49,20 @@ public class Notification {
 		owner = getOwnerbyOwnerId(product.getOwnerId());
 		reviewer = review.getReviewer();
 		reviewText = review.getReviewText();
-		
 		String recipient = owner.getPhoneNumber();
-		String body = header+ "Your product has been reviewed.";
-		body = body + "\n Product Name: "+product.getProductName();
-		body = body + "\n Reviewer Name: "+reviewer;
-		
-		if(product.isWhichTemplate())
-			body = body+"\nLike/Unlike : ";
-		else
-			body = body+"\nStar rating : ";
-		
-		body = body+ review.getTemplateText();
+		String body = "\n \n Your product has been reviewed.";
+		body = body + "\n Product name: "+product.getProductName();
+		body = body + "\n Reviewer name: "+reviewer;
 		body = body + "\n Review : "+reviewText;
-		body = body+ "\n###########";
-		
 		twilio.notify(body, recipient);
 	}
 	
 	public void notifyProductInfo(int productId, int choice) throws TwilioRestException {
 		product = getProductbyProductId(productId);
 		owner = getOwnerbyOwnerId(product.getOwnerId());
-		
 		String template;
 		String recipient = owner.getPhoneNumber();
-		String body = header;
-		
+		String body = "-\n";
 		if (product.isWhichTemplate())
 			template = "LIKE/UNLIKE";
 		else
@@ -88,17 +70,16 @@ public class Notification {
 		
 		switch(choice) {
 		case 1:
-			body = body+"Congratulations! You have added a new product.\nProduct Name : "+product.getProductName();
+			body = "Congratulations! You have added a new product.\nProduct Name : "+product.getProductName();
 			break;
 		case 2:
-			body = body+"You have made your product "+product.getProductName()+" \"Reviewable\" by customers";
+			body = "You have made your product "+product.getProductName()+" \"Reviewable\" by customers";
 			break;
 		case 3:
-			body = body+"You have changed the template of the reviews for the product "+product.getProductName()+ " to "+template;
-			break;			
+			body = "You have changed the template of the reviews for the product "+product.getProductName()+ " to "+template;
+			break;
+			
 		}
-		
-		body = body+ "\n###########";
 		
 		twilio.notify(body, recipient);
 		

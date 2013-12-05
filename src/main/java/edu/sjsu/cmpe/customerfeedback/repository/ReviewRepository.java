@@ -81,9 +81,9 @@ public class ReviewRepository extends ReviewRepositoryInterface {
 	 }
 	 
 	@Override
-	public ArrayList<Review> getAllReviews(){
+	public ArrayList<Review> getAllReviews(int reviewId){
 		ArrayList<Review> tempReviews = new ArrayList<Review>();
-		DBCursor tempCursor = reviewTable.find(new BasicDBObject(), new BasicDBObject("_id",false));
+		DBCursor tempCursor = reviewTable.find(new BasicDBObject("productId",reviewId), new BasicDBObject("_id",false));
 		while(tempCursor.hasNext()) {
 			//Review tempReview = new Review();
 			//DBObject review = tempList.next();

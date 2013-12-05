@@ -1,10 +1,10 @@
 package edu.sjsu.cmpe.customerfeedback;
 
-import org.bson.NewBSONDecoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.yammer.dropwizard.Service;
+import com.yammer.dropwizard.assets.AssetsBundle;
 import com.yammer.dropwizard.config.Bootstrap;
 import com.yammer.dropwizard.config.Environment;
 import com.yammer.dropwizard.views.ViewBundle;
@@ -20,13 +20,13 @@ import edu.sjsu.cmpe.customerfeedback.repository.ProductRepository;
 import edu.sjsu.cmpe.customerfeedback.repository.ProductRepositoryInterface;
 import edu.sjsu.cmpe.customerfeedback.repository.ReviewRepository;
 import edu.sjsu.cmpe.customerfeedback.repository.ReviewRepositoryInterface;
+import edu.sjsu.cmpe.customerfeedback.repository.UserRepository;
+import edu.sjsu.cmpe.customerfeedback.repository.UserRepositoryInterface;
 import edu.sjsu.cmpe.customerfeedback.ui.resources.HomeResource;
 import edu.sjsu.cmpe.customerfeedback.ui.resources.OwnerViewResource;
 import edu.sjsu.cmpe.customerfeedback.ui.resources.ProductViewResource;
 import edu.sjsu.cmpe.customerfeedback.ui.resources.ProductsViewResource;
 import edu.sjsu.cmpe.customerfeedback.ui.resources.ReviewsViewResource;
-
-
 
 public class CustomerFeedbackSevice extends Service<CustomerFeedbackServiceConfiguration> {
 	private final Logger log =  LoggerFactory.getLogger(getClass());
@@ -39,6 +39,7 @@ public class CustomerFeedbackSevice extends Service<CustomerFeedbackServiceConfi
     public void initialize(Bootstrap<CustomerFeedbackServiceConfiguration> bootstrap) {
 	bootstrap.setName("customerfeedback-service");
 	bootstrap.addBundle(new ViewBundle());
+	bootstrap.addBundle(new AssetsBundle());
     }
 
     @Override
@@ -56,18 +57,15 @@ public class CustomerFeedbackSevice extends Service<CustomerFeedbackServiceConfi
 	ReviewRepositoryInterface reviewRepository = new ReviewRepository();
 	environment.addResource(new ReviewResource(reviewRepository));	
 	/** UI Resources */
-	environment.addResource(new HomeResource());
+	UserRepositoryInterface userRepository = new UserRepository();
+	environment.addResource(new HomeResource(userRepository, ownerRepository));
 	environment.addResource(new OwnerViewResource(productRepository));
+	environment.addResource(new ProductViewResource(productRepository));
 	environment.addResource(new ProductsViewResource(productRepository));
-	//environment.addResource(new ProductViewResource(productRepository));
-	//environment.addResource(new ReviewsViewResource(reviewRepository));
+	environment.addResource(new ReviewsViewResource(reviewRepository));
 	/** Add new resources here */
-	
-	
+		
 	log.debug(configuration.toString());
 	//System.out.println(configuration.toString());
     }
-
-	
-
 }
