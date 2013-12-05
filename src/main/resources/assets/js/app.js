@@ -71,20 +71,6 @@ $(":button").click(function() {
 	
 });
 
-/*$("#submit").click(function() {
-	  //$( this ).slideUp();
-	alert("reload");
-	window.location.reload();
-	});*/
-
-
-/*$("#login").submit(function(event) {
-	alert("Form Submitted");
-	window.location.reload();
-	event.preventDefault();
-	var $form = $( this );
-	alert ($form.data);	
-});*/
 
 $("#login").submit(function(event){
 	//alert("Form Submitted");
@@ -107,32 +93,3 @@ $("#login").submit(function(event){
 	});
 });
 
-/*$('form').submit(function(event){
-	alert("Form Submitted");
-	window.location.reload();
-	event.preventDefault();
-	var $form = $( this );
-	alert("11");
-	var produName = $form.find( "input[name='productName']" ).val();
-	var covrImage = $form.find( "input[name='coverImage']" ).val();
-	var url = url: '/cust-feedback/v1/owners/'+ownerId+'/products/';
-	alert(produName);
-	alert(covrImage);
-	alert(url);
-	var serializedData = (JSON.stringify(form.serializeObject()));
-	alert(serializedData);
-	alert("2");
-	$.ajax({
-		  type: 'POST',
-		  url: '/cust-feedback/v1/owners/'+ownerId+'/products/',
-		  contentType:"application/json",
-		  success: function(data){
-			  alert('POSTED!');
-			  location.reload();
-		  }
-	});
-	alert("before");
-	$.post(url, {productName: produName, coverImage: covrImage});
-	alert("after");
-});
-*/
