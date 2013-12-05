@@ -1,33 +1,151 @@
-<html>
-        <body>
+<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+       <head>
+  <meta charset="utf-8" />
+
+  <!-- Set the viewport width to device width for mobile -->
+  <meta name="viewport" content="width=device-width" />
+
+  
+  <!-- Included CSS Files (Uncompressed) -->
+  <!--
+  <link rel="stylesheet" href="/assets/epic/stylesheets/foundation.css">
+  -->
+  
+  <!-- Included CSS Files (Compressed) -->
+  <link rel="stylesheet" href="/assets/epic/stylesheets/foundation.min.css">
+  <link rel="stylesheet" href="/assets/epic/stylesheets/main.css">
+  <link rel="stylesheet" href="/assets/epic/stylesheets/app.css">
+
+  <script src="/assets/epic/javascripts/modernizr.foundation.js"></script>
+  
+  <!-- Google fonts -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300|Playfair+Display:400italic' rel='stylesheet' type='text/css' />
+
+  <!-- IE Fix for HTML5 Tags -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+</head>
+<body>
+ <div class="row page_wrap">
+    <!-- page wrap -->
+    <div class="twelve columns">
+      <!-- page wrap -->
+
+      <div class="row">
+        <div class="twelve columns header_nav">
+        
+        <div class="twelve columns">
+            <ul id="menu-header" class="nav-bar horizontal" text-align:"center">
+            
+             
+              <li class="has-flyout">
+               <li class=""><align ="center"><b>CUSTOMER FEEDBACK SERVICE</b></span></li>
+
+
+               
+             
+            </ul><script type="text/javascript">
+           //<![CDATA[
+           $('ul#menu-header').nav-bar();
+            //]]>
+            </script>
+            
+            </div>
+            
+          </div>
+
+          
+        </div><!-- END Header -->
+
+      <div class="row hide-for-small">
+      
+        <div class="twelve columns">
+           <div class="heading_dots"><h1 class="heading_supersize"><span class="heading_center_bg">Products</span></h1></div>
+         </div>
+         
+      </div><!-- end row -->
+
             <!-- calls getBooks() from HomeResource -->
 			<div align="center"><img class="img-thumbnail" height="300" width="300" src="{{product.coverImage}}"></div>
             <div align="center"><font size="48"><b><pre>{{product.productName}}<b></font>
             <b><pre>Sort Reviews by: </b><a href="./default">Default Order</a> <a href="./helpfulness">Helpfulness</a> <a href="./recent">Recent</a></pre></div>
             <div align="center">
             <table border="1">
-            
             	<tr>
             		<td><font size="4.5"><pre><b>Reviewer</b></font></td>
             		<td><font size="4.5"><pre><b>Review</b></font></td>
             		<td><font size="4.5"><pre><b>Rating</b></font></td>
             		<td><font size="4.5"><pre><b>Helpfulness</b></font></td>
+            		<td><font size="4.5"><pre><b>Helpful?</b></font></td>
             	</tr>
-            	
             {{#reviews}}
-           
                 <tr>
                     <td><font size="4"><pre>{{reviewer}}</font></td>
                     <td><font size="4"><pre>{{reviewText}}</font></td>
                     <td><font size="4"><pre>{{TemplateText}}</font></td>  
-                    <td><font size="4"><pre>{{helpfulness}}%</font></td>                                      
+                    <td><font size="4"><pre>{{helpfulness}}%</font></td>
+                    <td><button id="{{productId}}-Helpfulness-{{reviewId}}-1" type="button" class="btn btn-primary">Yes</button>
+                    <button id="{{productId}}-Helpfulness-{{reviewId}}-0" type="button" class="btn btn-primary">No</button></td> 
+                                      
                 </tr>
-                
             {{/reviews}}
             </table>
 
             </div>
 			
+			
+			            <script src="//code.jquery.com/jquery.js"></script>
+            <!-- Latest compiled and minified JavaScript -->
+            <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+            <!-- application ui scripts -->
+			<script src="/assets/js/app.js"></script>
+			
+			<div class="twelve columns">
+				<ul id="menu3" class="footer_menu horizontal">
+					<li class=""><a href="#">Copyright Spaark 2013</a></li>
+				</ul>
+        </div>
+				<script type="text/javascript">
+//<![CDATA[
+                                                        $('ul#menu3').nav-bar();
+      //]]>
+      </script>
+			</div>
+		</div>
+		<!-- end page wrap) -->
+		<!-- Included JS Files (Compressed) -->
+		<script src="/assets/epic/javascripts/foundation.min.js" type="text/javascript">
+		</script>
+		<!-- Initialize JS Plugins -->
+		<script src="/assets/epic/javascripts/app.js" type="text/javascript">
+		</script>
+		<!-- Masonry for galleries -->
+		<script src="/assets/epic/javascripts/masonry.js" type="text/javascript">
+		</script>
+		<script type="text/javascript">
+//<![CDATA[
+      $(function(){
+        var $container = $('#container');
+        $container.imagesLoaded( function(){
+          $container.masonry({
+            itemSelector : '.box',
+                        isFitWidth: true,
+                        isAnimated: true
+          });
+        });
+      });
+  //]]>
+  </script>
+		<!-- END Masonry -->
         </body>
 </html>
-
+       
