@@ -38,4 +38,19 @@ public class ReviewRepositoryInterface {
 		return null;
 	}
 
+	public void updateHelpfulness(boolean helpful, int productId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public ArrayList<Review> getAllReviewsbyHelpfulness(int productId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ArrayList<Review> getAllReviewsbyRecent(int productId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
